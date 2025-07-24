@@ -20,6 +20,7 @@ public class SeleniumMethods {
 //    static WebDriver driver = new EdgeDriver(options);
 //    EdgeOptions options = new EdgeOptions();
 //    driver = new EdgeDriver(options);k
+    //test commit
     static WebDriver driver;
     static EdgeOptions options = new EdgeOptions();
 
