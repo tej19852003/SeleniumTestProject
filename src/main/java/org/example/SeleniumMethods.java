@@ -13,16 +13,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+
 public class SeleniumMethods {
-    //    static WebDriver driver = new ChromeDriver();
-//    static WebDriver driver;
-//    static EdgeOptions options = new EdgeOptions();
-//    static WebDriver driver = new EdgeDriver(options);
-//    EdgeOptions options = new EdgeOptions();
-//    driver = new EdgeDriver(options);k
-    //test commit
-    static WebDriver driver;
-    static EdgeOptions options = new EdgeOptions();
+    WebDriver driver;
 
     String chromeDriverPath = System.getProperty("user.dir") + "/BrowsersDriver/chromedriver.exe";
     String edgeDriverPath = System.getProperty("user.dir") + "/BrowsersDriver/msedgedriver.exe";
@@ -30,8 +23,7 @@ public class SeleniumMethods {
     public void startEdgeDriver(String url) throws InterruptedException {
         System.setProperty("webdriver.edge.driver", edgeDriverPath);
 
-        options.addArguments("--start-maximized");
-        driver = new EdgeDriver(options);
+        driver = new EdgeDriver(new EdgeOptions().addArguments("--start-maximized"));
 
         driver.get(url);
         driver.manage().window().fullscreen();
@@ -69,6 +61,10 @@ public class SeleniumMethods {
     }
 
     public void click(String xpath) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Wait until the element identified by its ID is clickable
+        WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
         driver.findElement(By.xpath(xpath)).click();
     }
 

@@ -1,27 +1,25 @@
 package org.example;
 
-
-public class BankRateTest {
-
-    //    static long fiveSeconds = 5000;
-    static long twoSeconds = 2000;
-    static long oneSecond = 1000;
-
-    static String url = "https://www.bankrate.com/mortgages/mortgage-calculator/";
+public class BankRateTest implements WebElementXPath {
+    static String browser = EDGE;
+//    static String browser = CHROME;
 
     public static void main(String[] args) throws InterruptedException {
+
         SeleniumMethods po = new SeleniumMethods();
+        if (browser.equals("CHROME")) {
+            po.startChromeDriver(url_BankRate);
+        } else if (browser.equals("EDGE")){
+            po.startEdgeDriver(url_BankRate);
+        }
 
+        po.waitfor(oneSecond);
 
-//        po.startEdgeDriver(url);
-        po.startChromeDriver(url);
+        po.click(button_cookieAccept);
         po.waitfor(oneSecond);
-        ////button[@id='onetrust-pc-btn-handler']
-        po.click("//button[@id='onetrust-pc-btn-handler']");
+        po.click(button_cookieAccept2);
         po.waitfor(oneSecond);
-        po.click("//button[@class='save-preference-btn-handler onetrust-close-btn-handler']");
-        po.waitfor(oneSecond);
-        po.textBox("homePrice", "700000");
+        po.textBox(textbox_homePrice, "700000");
         po.waitfor(oneSecond);
         po.textBoxwithxpath("(//input[@aria-labelledby='down-payment'])[1]", "55000");
         po.waitfor(oneSecond);
