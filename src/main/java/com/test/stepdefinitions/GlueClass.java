@@ -31,8 +31,6 @@ public class GlueClass {
 
         restAssuredTest.restAssured_Get_Request_test();
         restAssuredTest.restAssured_Post_Request_test();
-
-
     }
 
 
