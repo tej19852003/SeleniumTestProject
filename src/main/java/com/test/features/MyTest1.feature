@@ -10,3 +10,8 @@ Feature:MyTest1
   Scenario:this is my second scenario
     When Firstline
     Then Secondline
+
+  @smoke
+  Scenario:BankRate app test
+    When Firstline
+    Then Start BankRate app test
