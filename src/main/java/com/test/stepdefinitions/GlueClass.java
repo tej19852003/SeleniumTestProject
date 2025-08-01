@@ -3,6 +3,7 @@ package com.test.stepdefinitions;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.BankRateTest;
+import org.example.RestAssuredTest;
 
 public class GlueClass {
     @When("^Firstline$")
@@ -22,4 +23,17 @@ public class GlueClass {
         BankRateTest bankRateTest = new BankRateTest();
         bankRateTest.runSelenium();
     }
+    @Then("^RestAPI test$")
+    public void restAPItest() throws InterruptedException {
+
+        System.out.println("This is restAPItest ");
+        RestAssuredTest restAssuredTest = new RestAssuredTest();
+
+        restAssuredTest.restAssured_Get_Request_test();
+        restAssuredTest.restAssured_Post_Request_test();
+
+
+    }
+
+
 }

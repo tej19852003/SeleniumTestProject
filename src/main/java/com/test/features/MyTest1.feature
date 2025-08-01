@@ -15,3 +15,8 @@ Feature:MyTest1
   Scenario:BankRate app test
     When Firstline
     Then Start BankRate app test
+
+  @smoke
+  Scenario:RestAPI test
+    When Firstline
+    Then RestAPI test
