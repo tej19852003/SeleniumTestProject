@@ -15,6 +15,19 @@ import java.time.Duration;
 
 
 public class SeleniumMethods {
+    private static SeleniumMethods seleniumMethods;
+
+    private SeleniumMethods() {
+        // Constructor logic (optional)
+    }
+
+    public static SeleniumMethods getInstance() {
+        if (seleniumMethods == null) {
+            seleniumMethods = new SeleniumMethods();
+        }
+        return seleniumMethods;
+    }
+
     WebDriver driver;
 
     String chromeDriverPath = System.getProperty("user.dir") + "/BrowsersDriver/chromedriver.exe";

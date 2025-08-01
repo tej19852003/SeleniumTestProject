@@ -8,6 +8,6 @@ public interface WebElementXPath {
     String button_cookieAccept2 = "//button[@class='save-preference-btn-handler onetrust-close-btn-handler']";
     String url_BankRate = "https://www.bankrate.com/mortgages/mortgage-calculator/";
     String textbox_homePrice = "homePrice";
-    String CHROME = "CHROME";
-    String EDGE = "EDGE";
+    String textbox_downpayment = "(//input[@aria-labelledby='down-payment'])[1]";
+
 }

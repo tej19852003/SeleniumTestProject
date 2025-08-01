@@ -1,15 +1,16 @@
 package org.example;
 
-public class BankRateTest implements WebElementXPath {
-    static String browser = EDGE;
-//    static String browser = CHROME;
+public class BankRateTest implements WebElementXPath, Constants {
+//    static BROWSER browser = BROWSER.EDGE;
+    static BROWSER browser = BROWSER.CHROME;
 
-    public static void main(String[] args) throws InterruptedException {
+    public void runSelenium () throws InterruptedException {
 
-        SeleniumMethods po = new SeleniumMethods();
-        if (browser.equals("CHROME")) {
+        SeleniumMethods po = SeleniumMethods.getInstance();
+
+        if (browser.equals(BROWSER.CHROME)) {
             po.startChromeDriver(url_BankRate);
-        } else if (browser.equals("EDGE")){
+        } else if (browser.equals(BROWSER.EDGE)){
             po.startEdgeDriver(url_BankRate);
         }
 
@@ -17,15 +18,17 @@ public class BankRateTest implements WebElementXPath {
 
         po.click(button_cookieAccept);
         po.waitfor(oneSecond);
-        po.click(button_cookieAccept2);
+        SeleniumMethods po1 = SeleniumMethods.getInstance();
+        po1.click(button_cookieAccept2);
+        po1.waitfor(oneSecond);
+        SeleniumMethods po2 = SeleniumMethods.getInstance();
+        po2.textBox(textbox_homePrice, HOMEPRICE);
+        po2.waitfor(oneSecond);
+        po2.textBoxwithxpath(textbox_downpayment, DOWNPAYMENT);
+        po2.waitfor(oneSecond);
+        po.selectDropdown("//select[@id='text22']", YEARS_15);
         po.waitfor(oneSecond);
-        po.textBox(textbox_homePrice, "700000");
-        po.waitfor(oneSecond);
-        po.textBoxwithxpath("(//input[@aria-labelledby='down-payment'])[1]", "55000");
-        po.waitfor(oneSecond);
-        po.selectDropdown("//select[@id='text22']", "15 years");
-        po.waitfor(oneSecond);
-        po.selectDropdown("//select[@id='text22']", "30 years");
+        po.selectDropdown("//select[@id='text22']", YEARS_30);
         po.waitfor(oneSecond);
         po.textBox("__br_el_29", "60195");
         po.waitfor(oneSecond);

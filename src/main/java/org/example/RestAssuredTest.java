@@ -9,7 +9,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 
 public class RestAssuredTest {
-    public static void main(String[] args) {
+    public void testRestAssured() {
         System.out.println("this is RestAssured Test");
 
         RestAssuredTest test = new RestAssuredTest();

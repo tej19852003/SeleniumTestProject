@@ -20,10 +20,30 @@ dependencies {
     implementation("org.seleniumhq.selenium:selenium-java:4.34.0")
     // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
     implementation("io.rest-assured:rest-assured:5.5.5")
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
+    implementation("io.cucumber:cucumber-java:7.26.0")
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit
+    implementation("io.cucumber:cucumber-junit:7.26.0")
+    // https://mvnrepository.com/artifact/junit/junit
+    implementation("junit:junit:4.12")
 }
 
-task {
-
+tasks.register('cucumberCli') {
+    println "Running Cucumber CLI"
+    dependsOn assemble, testClasses
+    doLast {
+        println "Running Cucumber CLI-2"
+        javaexec {
+            mainClass = "io.cucumber.core.cli.Main"
+            classpath = sourceSets.main.runtimeClasspath + sourceSets.test.runtimeClasspath
+            args = [
+                    '--plugin', 'pretty',
+                    '--plugin', 'html:target/cucumber-report.html',
+                    '--glue', 'com.test.stepdefinitions',
+                    '--tags', '@smoke',
+                    'src/main/java/com/test/features']
+        }
+    }
 }
 
 test {
